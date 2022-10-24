@@ -2,3 +2,6 @@ Flickr_Data/
 .ipynb_checkpoints/
 /image_feature_vectors.npy
 /captions_dict_encoded.npy
+/X.npy
+/y_in.npy
+/y_out.npy
