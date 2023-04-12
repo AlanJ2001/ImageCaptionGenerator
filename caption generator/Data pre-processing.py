@@ -147,8 +147,8 @@ def encode_captions_dict(captions_dict, vocab):
 
 
 if __name__ == "__main__":
-    images_path = 'Flickr_Data/Images/'
-    captions_path = "results.csv"
+    images_path = 'flickr-image-dataset/flickr30k_images/'
+    captions_path = "flickr-image-dataset/results.csv"
     max_len = 40
     
     resnet_model = resnet()

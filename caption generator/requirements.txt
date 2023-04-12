@@ -1,0 +1,12 @@
+keras_preprocessing
+scikit-learn
+keras==2.11.0
+tensorflow==2.11.0
+numpy
+opencv
+keras_preprocessing
+pandas
+npy_append_array
+sklearn.preprocessing
+nltk
+streamlit

@@ -16,9 +16,8 @@ from keras.layers import (LSTM, BatchNormalization, Dense, Dropout, Embedding,
 
 
 # model
-def create_model():
-    vocab_size = 5185+1
-    max_length = 40
+def create_model(max_length, vocab_size):
+    vocab_size = vocab_size+1
     unit_size = 512
 
     # image feature extractor model
@@ -54,7 +53,8 @@ def create_model():
 
 
 def gen(X_path, y_in_path, y_out_path, batch_size):
-    for i in range(0, 2022727, batch_size):
+    total_num_of_samples = len(np.load(X_path, mmap_mode="r"))
+    for i in range(0, total_num_of_samples, batch_size):
         y_out = np.load(y_out_path, mmap_mode="r")[i:i+batch_size]
         X = np.load(X_path, mmap_mode="r")[i:i+batch_size]
         y_in = np.load(y_in_path, mmap_mode="r")[i:i+batch_size]
@@ -78,17 +78,19 @@ def train(model, X_path, y_in_path, y_out_path, batch_size, start_epoch, end_epo
         g = gen(X_path, y_in_path, y_out_path, batch_size)
         print(f"epoch_{i}")
         model.fit(g, epochs=1, steps_per_epoch=total_num_of_samples//batch_size)
-        model.save(f"image_caption_gen_epoch_{i}.h5")
+        model.save_weights(f"image_caption_gen_epoch_{i}.h5")
 
 
 # In[ ]:
 
 
 if __name__ == "__main__":
-    model = create_model()
-    X_path = "/kaggle/input/30k-dataset/train/X_train.npy"
-    y_in_path = "/kaggle/input/30k-dataset/train/y_in_train.npy"
-    y_out_path = "/kaggle/input/30k-dataset/train/y_out_train.npy"
+    max_length = 40
+    vocab_size = 5185
+    model = create_model(max_length, vocab_size)
+    X_path = "data/X_train.npy"
+    y_in_path = "data/y_in_train.npy"
+    y_out_path = "data/y_out_train.npy"
     batch_size = 1024
     start_epoch = 1
     end_epoch = 20

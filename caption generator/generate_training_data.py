@@ -68,11 +68,11 @@ def generate_training_data(img_feature_vectors, images_set, captions_dict_encode
 
 
 if __name__ == "__main__":
-    img_feature_vectors = np.load("img_feature_vectors.npy", allow_pickle=True).item()
-    captions_dict_encoded = np.load("captions_dict_encoded.npy", allow_pickle=True).item()
-    vocab = np.load("vocab.npy", allow_pickle=True).item()
-    train = np.load("train.npy", allow_pickle=True).item()
-    test = np.load("test.npy", allow_pickle=True).item()
+    img_feature_vectors = np.load("data/img_feature_vectors.npy", allow_pickle=True).item()
+    captions_dict_encoded = np.load("data/captions_dict_encoded.npy", allow_pickle=True).item()
+    vocab = np.load("data/vocab.npy", allow_pickle=True).item()
+    train = np.load("data/train.npy", allow_pickle=True).item()
+    test = np.load("data/test.npy", allow_pickle=True).item()
     
     
     vocab_len = len(vocab)

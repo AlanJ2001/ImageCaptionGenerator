@@ -166,9 +166,8 @@ def image_caption_generator_nucleus_sampling(filename, model, vocab):
 # In[12]:
 
 # model
-def create_model():
-    vocab_size = 5185+1
-    max_length = 40
+def create_model(max_length, vocab_size):
+    vocab_size = vocab_size+1
     unit_size = 512
 
     # image feature extractor model
@@ -200,10 +199,12 @@ def create_model():
 
 
 if __name__ == "__main__":
-    filename = "3637013_c675de7705.jpg"
-    model = create_model()
-    model.load_weights("final_model.h5")
-    vocab = np.load("vocab.npy", allow_pickle=True).item()
+    filename = "47871819_db55ac4699.jpg"
+    max_length = 40
+    vocab_size = 5185
+    model = create_model(max_length, vocab_size)
+    model.load_weights("data/final_model_weights.h5")
+    vocab = np.load("data/vocab.npy", allow_pickle=True).item()
     print("Nucleus Sampling: "+image_caption_generator_nucleus_sampling(filename, model, vocab))
     print("Greedy: "+image_caption_generator_greedy(filename, model, vocab))
     print("Beam: "+image_caption_generator_beam(filename, model, 5, 5, vocab))
