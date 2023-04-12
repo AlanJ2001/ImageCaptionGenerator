@@ -20,3 +20,5 @@ Using the Web App
 Some files have not been included in the submission as they are too large. 
 	Flickr30k dataset can be downloaded at https://www.kaggle.com/datasets/hsankesara/flickr-image-dataset
 	all other data files not included in submission can be downloaded at https://drive.google.com/drive/folders/1CciO8bk4lnaXyneP70uYyhvuDoal1v2g 
+	
+![figure10](https://user-images.githubusercontent.com/77545869/231460437-ffdded1f-3e7f-4cf8-a996-d6a4acd9964c.PNG)
